@@ -1,0 +1,17 @@
+@startuml
+
+class User {
+  id : int
+  name : String
+  role : String
+  department : String
+}
+
+class Workstation {
+  hostname : String
+  ipAddress : String
+  os : String
+}
+
+User --|> Workstation : est affecté à
+@enduml
