@@ -1,0 +1,29 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+class EthernetFrame {
+  + srcMac : String
+  + destMac : String
+  + payload : String
+}
+
+class IPPacket {
+  + srcIp : String
+  + destIp : String
+  + ttl : int
+}
+
+class L2Switch {
+  # macTable : dict
+  + forward(frame : EthernetFrame) : void
+}
+
+class L3Switch {
+  - routingTable : dict
+  + route(packet : IPPacket) : void
+}
+
+L2Switch <|-- L3Switch : Héritage (est un)
+L2Switch ..> EthernetFrame : manipule
+L3Switch ..> IPPacket : manipule
+@enduml
